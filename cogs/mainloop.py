@@ -10,7 +10,6 @@ class Mainloop(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.header = {"User-Agent": get_config("HEADERS", "useragent")}
-        self.url = f"https://e621.net/favorites.json?user_id={get_config('USERS', 'hekkland')}"
         self.fave_changes.start()
 
     def make_request(self, url):
