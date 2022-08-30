@@ -22,7 +22,7 @@ class Mainloop(commands.Cog):
             with open(f"{user}data.json", "r", encoding="utf-8") as f:
                 posts = json.load(f)
 
-        except:
+        except json.JSONDecodeError:
             first_run = True
 
         with open(f"{user}data.json", "w", encoding="utf-8") as f:
