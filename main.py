@@ -62,12 +62,6 @@ async def reload(ctx, extension):
             await ctx.reply("Cog already loaded.")
 
 
-@bot.command()
-async def ping(ctx):
-    """test the response time of the bot"""
-    await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
-
-
 @bot.event
 async def on_ready():
     # load all cogs
