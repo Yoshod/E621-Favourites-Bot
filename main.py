@@ -71,12 +71,12 @@ async def ping(ctx):
 @bot.event
 async def on_ready():
     # load all cogs
-    #for filename in os.listdir('./cogs'):
-    #    if filename.endswith('.py'):
-    #        bot.load_extension(f'cogs.{filename[:-3]}')
-    #        print(f"Cog {filename[:-3]} loaded.")
+    for filename in os.listdir('./cogs'):
+        if filename.endswith('.py'):
+            bot.load_extension(f'cogs.{filename[:-3]}')
+            print(f"Cog {filename[:-3]} loaded.")
 
-    # files = [f for f in os.listdir('.') if os.path.isfile(f)] #unused
+    files = [f for f in os.listdir('.') if os.path.isfile(f)] #unused
     print(f"System Version:\n{sys.version}")
 
     print(f"Nextcord Version:\n{nextcord.__version__}")
