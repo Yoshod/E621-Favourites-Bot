@@ -10,12 +10,10 @@ intents.members = True
 
 bot = commands.Bot(command_prefix=get_config("BOT", "command prefix", "e621!"), intents=intents)
 
+
 @bot.command()
 async def load(ctx, extension):
-    """Loads Cog
-
-    Loads cog.
-    Permission needed: Sersi contributor"""
+    """Load cog."""
     try:
         bot.load_extension(f"cogs.{extension}")
         await ctx.reply(f"Cog {extension} loaded.")
@@ -27,10 +25,7 @@ async def load(ctx, extension):
 
 @bot.command()
 async def unload(ctx, extension):
-    """Unload Cog
-
-    Unloads cog.
-    Permission needed: Sersi contributor"""
+    """Unload Cog."""
     try:
         bot.unload_extension(f"cogs.{extension}")
         await ctx.reply(f"Cog {extension} unloaded.")
@@ -42,10 +37,9 @@ async def unload(ctx, extension):
 
 @bot.command()
 async def reload(ctx, extension):
-    """Reload Cog
-
-    Reloads cog. If cog wasn't loaded, loads cog.
-    Permission needed: Sersi contributor"""
+    """Reload Cog.
+    If cog wasn't loaded, loads cog.
+    """
     try:
         bot.unload_extension(f"cogs.{extension}")
         bot.load_extension(f"cogs.{extension}")
@@ -70,7 +64,6 @@ async def on_ready():
             bot.load_extension(f'cogs.{filename[:-3]}')
             print(f"Cog {filename[:-3]} loaded.")
 
-    files = [f for f in os.listdir('.') if os.path.isfile(f)] #unused
     print(f"System Version:\n{sys.version}")
 
     print(f"Nextcord Version:\n{nextcord.__version__}")
