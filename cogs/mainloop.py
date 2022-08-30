@@ -60,22 +60,25 @@ class Mainloop(commands.Cog):
 
     @tasks.loop(minutes=5.0)
     async def fave_changes(self):
-        for x in range(0, 2):
+        for x in range(0, 3):
             match x:
                 case 0:
                     channel = self.bot.get_channel(1014169602298748989)
                     userid = get_config('USERS', 'hekkland')
                     url = f"https://e621.net/favorites.json?user_id={userid}"
+                    print("Hekkland")
 
                 case 1:
                     channel = self.bot.get_channel(1014169656577249371)
                     userid = get_config('USERS', 'melanie')
                     url = f"https://e621.net/favorites.json?user_id={userid}"
+                    print("Melanie")
 
                 case 2:
                     channel = self.bot.get_channel(1014169684473548861)
                     userid = get_config('USERS', 'reggie')
                     url = f"https://e621.net/favorites.json?user_id={userid}order:-id"
+                    print("Reggie")
 
             data = self.make_request(url)
             data, added_posts, removed_posts = self.compare(data, userid)
